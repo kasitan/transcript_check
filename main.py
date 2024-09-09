@@ -27,7 +27,8 @@ def find_non_monotonic_timecodes(transcript):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     result = None
-    if request.method == 'POST':
+    is_post = request.method == 'POST'
+    if is_post:
         transcript = request.form['transcript']
         result = find_non_monotonic_timecodes(transcript)
     
@@ -47,8 +48,10 @@ def index():
         <li>{{ tc }}</li>
       {% endfor %}
     </ul>
+    {% elif is_post %}
+    <p>No input provided.</p>
     {% else %}
-    <p>All timecodes are monotonically increasing or no input provided.</p>
+    <p>All timecodes are monotonically increasing</p>
     {% endif %}
     """
     return render_template_string(html_form, result=result)
