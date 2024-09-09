@@ -49,9 +49,9 @@ def index():
       {% endfor %}
     </ul>
     {% elif is_post %}
-    <p>No input provided.</p>
-    {% else %}
     <p>All timecodes are monotonically increasing</p>
+    {% else %}
+    <p>No input provided.</p>
     {% endif %}
     """
     return render_template_string(html_form, result=result)
