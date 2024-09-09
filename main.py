@@ -19,7 +19,7 @@ def find_non_monotonic_timecodes(transcript):
         if match:
             current_timecode = match.group(0)
             current_time = parse_timecode(current_timecode)
-            if previous_time and current_time <= previous_time:
+            if previous_time and current_time < previous_time:
                 non_monotonic.append(current_timecode)
             previous_time = current_time
     return non_monotonic
