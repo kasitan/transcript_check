@@ -54,7 +54,7 @@ def index():
     <p>No input provided.</p>
     {% endif %}
     """
-    return render_template_string(html_form, result=result)
+    return render_template_string(html_form, result=result, is_post=is_post)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
